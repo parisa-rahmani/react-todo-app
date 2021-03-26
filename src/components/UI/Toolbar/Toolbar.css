@@ -1,0 +1,7 @@
+.Toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 3rem;
+  background-color: rgba(102, 154, 199, 0.651);
+}
