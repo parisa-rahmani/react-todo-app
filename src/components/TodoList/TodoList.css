@@ -1,13 +1,25 @@
 .TodoList {
   margin: 2rem auto;
 }
+
 .TodoList ul {
+  width: 45vw;
   margin: 3rem auto;
+  padding: 3rem 2rem;
+  box-shadow: -13px -13px 60px rgb(255 255 255),
+    inset 10px 10px 74px rgb(255 255 255),
+    inset -14px -14px 30px rgb(0 0 0 / 55%), 10px 10px 40px rgb(0 0 0 / 25%);
+  border-radius: 30px;
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
+  -ms-border-radius: 30px;
+  -o-border-radius: 30px;
 }
+
 .TodoList__item {
   display: block;
   padding: 1rem;
-  width: 50vw;
+  width: 80%;
   border: 1px solid lightblue;
   margin: 0.5rem auto;
   list-style-type: none;

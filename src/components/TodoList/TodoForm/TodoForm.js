@@ -8,6 +8,7 @@ const TodoForm = props => {
     props.onAddListItems({ title: enteredTitle, date: new Date().getTime() });
     setEnteredTitle('');
   };
+
   const onChange = event => {
     setEnteredTitle(event.target.value);
   };
