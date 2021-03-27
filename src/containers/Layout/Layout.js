@@ -9,7 +9,6 @@ const layout = () => {
         <Toolbar />
       </header>
       <main>
-        <p>search section</p>
         <TodoList />
       </main>
     </React.Fragment>

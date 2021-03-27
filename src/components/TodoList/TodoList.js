@@ -40,6 +40,7 @@ const TodoList = props => {
     <div className={classes.TodoList}>
       <h1>ToDo List</h1>
       <TodoForm onAddListItems={addListItem} />
+      <p>search section</p>
       <ul>{listItemsOutput}</ul>
     </div>
   );
