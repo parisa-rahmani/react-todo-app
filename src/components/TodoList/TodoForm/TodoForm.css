@@ -1,0 +1,63 @@
+.TodoForm {
+  width: 40vw;
+  margin: 0 auto;
+  padding: 1.2rem;
+  box-shadow: 0px 0.5px 6px rgb(0 0 0 / 25%);
+  border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
+}
+
+.TodoForm form {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.TodoForm input,
+.TodoForm input:focus {
+  width: 45%;
+  outline: none;
+  border: 1px solid rgb(57, 163, 235);
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  padding: 0.8rem 1rem;
+}
+
+.TodoForm button,
+.TodoForm button:active,
+.TodoForm button:hover {
+  outline: none;
+  border: 1px solid rgb(57, 163, 235);
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  padding: 0.8rem 1rem;
+  cursor: pointer;
+  transform: translateY(0);
+  -webkit-transform: translateY(0);
+  -moz-transform: translateY(0);
+  -ms-transform: translateY(0);
+  -o-transform: translateY(0);
+  transition: all 0.3s;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -ms-transition: all 0.3s;
+  -o-transition: all 0.3s;
+}
+
+.TodoForm button:active {
+  transform: translateY(2px);
+  -webkit-transform: translateY(2px);
+  -moz-transform: translateY(2px);
+  -ms-transform: translateY(2px);
+  -o-transform: translateY(2px);
+}

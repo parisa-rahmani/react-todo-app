@@ -3,10 +3,7 @@ import TodoForm from './TodoForm/TodoForm';
 import classes from './TodoList.css';
 
 const TodoList = props => {
-  const [listItems, setListItems] = useState([
-    { title: 'list1', date: 'now' },
-    { title: 'list2', date: 'yesterday' },
-  ]);
+  const [listItems, setListItems] = useState([]);
 
   const addListItem = listItem => {
     if (listItem.title === '') return alert('enter something');
@@ -19,20 +16,25 @@ const TodoList = props => {
     );
   };
 
-  console.log(listItems);
+  // const changeItemHandler = title => {
+  //   setListItems(prevItems => [
+  //     ...prevItems,
+  //     { title: title, date: new Date().getTime() },
+  //   ]);
+  // };
+
+  // console.log(listItems);
 
   let listItemsOutput = <p>lets add some todo item:)</p>;
-
   if (listItems.length > 0) {
-    listItemsOutput = listItems.map(item => (
-      <li
-        className={classes.TodoList__item}
-        key={item.date}
-        onClick={() => removeListItem(item.date)}
-      >
-        {item.title}
-      </li>
-    ));
+    listItemsOutput = listItems.map(item => {
+      return (
+        <li className={classes.TodoList__item} key={item.date}>
+          <p>{item.title}</p>
+          <span onClick={() => removeListItem(item.date)}>Del</span>
+        </li>
+      );
+    });
   }
   return (
     <div className={classes.TodoList}>

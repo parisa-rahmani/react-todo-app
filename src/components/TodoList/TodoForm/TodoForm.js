@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import classes from './TodoForm.css';
 
 const TodoForm = props => {
   const [enteredTitle, setEnteredTitle] = useState('');
@@ -14,15 +15,17 @@ const TodoForm = props => {
   };
 
   return (
-    <form onSubmit={onSubmitForm}>
-      <input
-        type="text"
-        placeholder="type here"
-        value={enteredTitle}
-        onChange={onChange}
-      />
-      <button type="submit">add ToDo</button>
-    </form>
+    <div className={classes.TodoForm}>
+      <form onSubmit={onSubmitForm}>
+        <input
+          type="text"
+          placeholder="type here"
+          value={enteredTitle}
+          onChange={onChange}
+        />
+        <button type="submit">+</button>
+      </form>
+    </div>
   );
 };
 
