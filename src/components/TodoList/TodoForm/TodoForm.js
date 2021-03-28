@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import classes from './TodoForm.css';
+import Input from '../../UI/Input/Input';
 
 const TodoForm = props => {
   const [enteredTitle, setEnteredTitle] = useState('');
@@ -17,11 +18,11 @@ const TodoForm = props => {
   return (
     <div className={classes.TodoForm}>
       <form onSubmit={onSubmitForm}>
-        <input
+        <Input
           type="text"
           placeholder="type here"
           value={enteredTitle}
-          onChange={onChange}
+          change={onChange}
         />
         <button type="submit">+</button>
       </form>

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import TodoForm from './TodoForm/TodoForm';
+import ListItem from '../ListItem/ListItem';
 import classes from './TodoList.css';
 
 const TodoList = props => {
@@ -23,18 +24,16 @@ const TodoList = props => {
   //   ]);
   // };
 
-  // console.log(listItems);
-
   let listItemsOutput = <p>lets add some todo item:)</p>;
   if (listItems.length > 0) {
-    listItemsOutput = listItems.map(item => {
-      return (
-        <li className={classes.TodoList__item} key={item.date}>
-          <p>{item.title}</p>
-          <span onClick={() => removeListItem(item.date)}>Del</span>
-        </li>
-      );
-    });
+    listItemsOutput = listItems.map(item => (
+      <ListItem
+        key={item.date}
+        class={classes.TodoList__item}
+        removeListItem={removeListItem}
+        title={item.title}
+      />
+    ));
   }
   return (
     <div className={classes.TodoList}>
