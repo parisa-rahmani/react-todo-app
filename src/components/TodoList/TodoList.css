@@ -1,8 +1,14 @@
 .TodoList {
   margin: 2rem auto;
-  font-size: 1rem;
 }
 
 .TodoList h1 {
   margin-bottom: 2rem;
+  font-size: 1.5rem;
+}
+
+@media (min-width: 650px) {
+  .TodoList h1 {
+    font-size: 2rem;
+  }
 }

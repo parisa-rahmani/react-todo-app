@@ -25,14 +25,19 @@ const TodoList = () => {
 
   useEffect(() => {
     initData();
-  }, [setListItems]);
+  }, []);
 
-  console.log(listItems);
+  // console.log(listItems);
 
   const addListItem = listItem => {
     setAddLoading(true);
 
-    if (listItem.title === '') return alert('enter something');
+    if (listItem.title === '') {
+      setAddLoading(false);
+      alert('enter somthing');
+      return;
+    }
+
     axios
       .post(
         'https://todo-app-d1d29-default-rtdb.firebaseio.com/todoitems.json',
@@ -72,7 +77,7 @@ const TodoList = () => {
 
   const completeItem = id => {
     const compItem = listItems.find(item => item.id === id);
-    console.log(compItem);
+    // console.log(compItem);
 
     axios
       .patch(
