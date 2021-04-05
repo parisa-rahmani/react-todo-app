@@ -1,4 +1,5 @@
 import React from 'react';
+import Spinner from '../UI/Spinner/Spinner';
 import classes from './ListItem.css';
 
 const listItem = props => {
@@ -6,6 +7,7 @@ const listItem = props => {
   if (props.isComplete) {
     classNames = [classes.TodoList__item__completed];
   }
+
   return (
     <li className={classes.TodoList__item}>
       <p className={classNames.join(' ')}>{props.title}</p>

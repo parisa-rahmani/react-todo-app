@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import classes from './TodoForm.css';
 import Input from '../../UI/Input/Input';
+import Spinner from '../../UI/Spinner/Spinner';
 
 const TodoForm = props => {
   const [enteredTitle, setEnteredTitle] = useState('');
@@ -14,9 +15,13 @@ const TodoForm = props => {
     });
     setEnteredTitle('');
   };
+
   const onChange = event => {
     setEnteredTitle(event.target.value);
   };
+
+  let spinner = null;
+  if (props.loading) spinner = <Spinner />;
 
   return (
     <div className={classes.TodoForm}>
@@ -27,6 +32,7 @@ const TodoForm = props => {
           value={enteredTitle}
           change={onChange}
         />
+        {spinner}
         <button type="submit">+</button>
       </form>
     </div>

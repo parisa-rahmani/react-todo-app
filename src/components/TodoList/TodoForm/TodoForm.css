@@ -13,13 +13,13 @@
 .TodoForm form {
   width: 100%;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
 }
 
 .TodoForm input,
 .TodoForm input:focus {
-  width: 45%;
+  width: 60%;
   outline: none;
   border: 1px solid rgb(57, 163, 235);
   border-radius: 10px;

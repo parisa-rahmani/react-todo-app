@@ -4,29 +4,26 @@ import TodoForm from './TodoForm/TodoForm';
 import ListItems from '../ListItems/ListItems';
 import classes from './TodoList.css';
 import axios from 'axios';
+import Spinner from '../UI/Spinner/Spinner';
 
 const TodoList = () => {
   const [listItems, setListItems] = useState([]);
+  const [addLoading, setAddLoading] = useState(false);
+  const [removeLoading, setRemoveLoading] = useState(false);
 
   const initData = () => {
     axios
       .get('https://todo-app-d1d29-default-rtdb.firebaseio.com/todoitems.json')
       .then(response => {
-        console.log(response.data);
         let transformData = [];
         for (let key in response.data) {
           transformData.push({ ...response.data[key], id: key });
         }
-        // const transformData = [
-        //   {
-        //     title: response.data.title,
-        //     date: response.data.date,
-        //     isComplete: response.data.isComplete,
-        //   },
-        // ];
         setListItems(transformData);
       })
-      .catch(error => console.log(error));
+      .catch(error => {
+        console.log(error);
+      });
   };
 
   useEffect(() => {
@@ -36,6 +33,8 @@ const TodoList = () => {
   console.log(listItems);
 
   const addListItem = listItem => {
+    setAddLoading(true);
+
     if (listItem.title === '') return alert('enter something');
     axios
       .post(
@@ -43,22 +42,32 @@ const TodoList = () => {
         listItem
       )
       .then(response => {
+        setAddLoading(false);
+
         const id = response.data.name;
         setListItems(prevListItems => [...prevListItems, { ...listItem, id }]);
       })
-      .catch(error => console.log(error));
+      .catch(error => {
+        setAddLoading(false);
+        console.log(error);
+      });
   };
 
   const removeListItem = id => {
     // console.log(item);
+    setRemoveLoading(true);
     axios
       .delete(
         `https://todo-app-d1d29-default-rtdb.firebaseio.com/todoitems/${id}.json`
       )
       .then(res => {
+        setRemoveLoading(false);
         initData();
       })
-      .catch(err => console.log(err));
+      .catch(err => {
+        setRemoveLoading(false);
+        console.log(err);
+      });
 
     // setListItems(prevListItems =>
     //   prevListItems.filter(item => item.date !== id)
@@ -102,7 +111,7 @@ const TodoList = () => {
   return (
     <div className={classes.TodoList}>
       <h1>ToDo List</h1>
-      <TodoForm onAddListItem={addListItem} />
+      <TodoForm loading={addLoading} onAddListItem={addListItem} />
       <ListItems
         listItems={listItems}
         onRemoveItem={removeListItem}
