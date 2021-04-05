@@ -9,4 +9,20 @@
 
 .Toolbar img {
   width: 3.5rem;
+  margin-right: auto;
+}
+
+.Toolbar * {
+  margin: 0.5rem;
+  text-transform: uppercase;
+  font-size: 1rem;
+  text-decoration: none;
+  font-weight: bold;
+  color: #eee;
+}
+
+.active {
+  color: #033850;
+  text-decoration: 0.2rem underline #033850;
+  text-underline-offset: 0.4rem;
 }

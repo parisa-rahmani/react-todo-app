@@ -1,16 +1,13 @@
 import React from 'react';
 import Toolbar from '../../components/UI/Toolbar/Toolbar';
-import TodoList from '../../components/TodoList/TodoList';
 
-const layout = () => {
+const layout = props => {
   return (
     <React.Fragment>
       <header>
         <Toolbar />
       </header>
-      <main>
-        <TodoList />
-      </main>
+      <main>{props.children}</main>
     </React.Fragment>
   );
 };
