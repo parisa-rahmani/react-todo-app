@@ -1,5 +1,4 @@
 import React from 'react';
-import Spinner from '../UI/Spinner/Spinner';
 import classes from './ListItem.css';
 
 const listItem = props => {
@@ -21,4 +20,4 @@ const listItem = props => {
   );
 };
 
-export default listItem;
+export default React.memo(listItem);

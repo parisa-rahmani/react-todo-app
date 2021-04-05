@@ -4,7 +4,7 @@ import classes from './ListItems.css';
 
 const listItems = ({ listItems, onRemoveItem, onCompleteItem }) => {
   let listItemsOutput = <p>lets add some todo item:)</p>;
-  // console.log(listItems);
+
   if (listItems.length > 0) {
     listItemsOutput = listItems.map(item => (
       <ListItem

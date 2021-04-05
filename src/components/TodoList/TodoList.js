@@ -1,15 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import TodoForm from './TodoForm/TodoForm';
-// import ListItem from '../ListItem/ListItem';
 import ListItems from '../ListItems/ListItems';
 import classes from './TodoList.css';
 import axios from 'axios';
-import Spinner from '../UI/Spinner/Spinner';
 
 const TodoList = () => {
   const [listItems, setListItems] = useState([]);
   const [addLoading, setAddLoading] = useState(false);
-  const [removeLoading, setRemoveLoading] = useState(false);
 
   const initData = () => {
     axios
@@ -49,28 +46,27 @@ const TodoList = () => {
       })
       .catch(error => {
         setAddLoading(false);
-        console.log(error);
+        alert(error.message);
       });
   };
 
   const removeListItem = id => {
-    // console.log(item);
-    setRemoveLoading(true);
     axios
       .delete(
         `https://todo-app-d1d29-default-rtdb.firebaseio.com/todoitems/${id}.json`
       )
       .then(res => {
-        setRemoveLoading(false);
         initData();
       })
       .catch(err => {
-        setRemoveLoading(false);
-        console.log(err);
+        alert(err.message);
       });
 
     // setListItems(prevListItems =>
-    //   prevListItems.filter(item => item.date !== id)
+    //   prevListItems.filter(item => {
+    //     console.log(item);
+    //     item.date !== id;
+    //   })
     // );
   };
 
@@ -78,9 +74,6 @@ const TodoList = () => {
     const compItem = listItems.find(item => item.id === id);
     console.log(compItem);
 
-    // const upData =
-    //   item.date === id ? { ...item, isComplete: !item.isComplete } : ' ';
-    // if (item.id === id) {
     axios
       .patch(
         `https://todo-app-d1d29-default-rtdb.firebaseio.com/todoitems/${id}.json`,
@@ -88,25 +81,7 @@ const TodoList = () => {
       )
       .then(res => initData())
       .catch(err => console.log(err));
-    // });
-    // if (item.date === id) {
-    //   return {
-    //     ...item,
-    //     isComplete: !item.isComplete,
-    //   };
-    // }
-    // return item;
-    //   setListItems(prevListItems => {
-
-    // });
   };
-
-  // const changeItemHandler = title => {
-  //   setListItems(prevItems => [
-  //     ...prevItems,
-  //     { title: title, date: new Date().getTime() },
-  //   ]);
-  // };
 
   return (
     <div className={classes.TodoList}>
