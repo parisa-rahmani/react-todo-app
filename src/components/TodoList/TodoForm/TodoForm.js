@@ -5,11 +5,6 @@ import Input from '../../UI/Input/Input';
 const TodoForm = props => {
   const [enteredTitle, setEnteredTitle] = useState('');
 
-  // const addListItem = listItem => {
-  //   if (listItem.title === '') return alert('enter something');
-  //   props.setListItems(prevListItems => [...prevListItems, { ...listItem }]);
-  // };
-
   const onSubmitForm = e => {
     e.preventDefault();
     props.onAddListItem({
