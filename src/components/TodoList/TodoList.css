@@ -3,50 +3,6 @@
   font-size: 1rem;
 }
 
-.TodoList ul {
-  width: 40vw;
-  margin: 3rem auto;
-  padding: 3rem 2rem;
-  /* box-shadow: -13px -13px 60px rgb(255 255 255),
-    inset 10px 10px 74px rgb(255 255 255),
-    inset -14px -14px 30px rgb(0 0 0 / 55%), 10px 10px 40px rgb(0 0 0 / 25%); */
-  box-shadow: 0px 0.5px 6px rgb(0 0 0 / 25%);
-  border-radius: 30px;
-  -webkit-border-radius: 30px;
-  -moz-border-radius: 30px;
-  -ms-border-radius: 30px;
-  -o-border-radius: 30px;
-}
-
-.TodoList__item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem;
-  width: 80%;
-  margin: 0.5rem auto;
-  list-style-type: none;
-  box-shadow: -2px -2px 0px rgb(255 255 255),
-    inset 2px 2px 10px rgb(255 255 255), inset -5px -5px 1px rgb(0 0 0 / 35%),
-    3px 3px 20px rgb(0 0 0 / 25%);
-  border-radius: 10px;
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
-  -ms-border-radius: 10px;
-  -o-border-radius: 10px;
-}
-
-.TodoList__item p {
-  width: 80%;
-  text-align: left;
-  overflow-wrap: break-word;
-}
-
-.TodoList__item span {
-  cursor: pointer;
-  color: brown;
-}
-
 .TodoList h1 {
   margin-bottom: 2rem;
 }

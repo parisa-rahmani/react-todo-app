@@ -11,4 +11,4 @@ const input = props => {
   );
 };
 
-export default input;
+export default React.memo(input);

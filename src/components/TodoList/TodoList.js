@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import TodoForm from './TodoForm/TodoForm';
-import ListItem from '../ListItem/ListItem';
+// import ListItem from '../ListItem/ListItem';
+import ListItems from '../ListItems/ListItems';
 import classes from './TodoList.css';
 import axios from 'axios';
 
-const TodoList = props => {
+const TodoList = () => {
   const [listItems, setListItems] = useState([]);
 
   useEffect(() => {
@@ -15,6 +16,7 @@ const TodoList = props => {
           {
             title: response.data.title,
             date: response.data.date,
+            isComplete: response.data.isComplete,
           },
         ];
         setListItems(transformData);
@@ -35,6 +37,20 @@ const TodoList = props => {
     );
   };
 
+  const completeItem = id => {
+    setListItems(prevListItems =>
+      prevListItems.map(item => {
+        if (item.date === id) {
+          return {
+            ...item,
+            isComplete: !item.isComplete,
+          };
+        }
+        return item;
+      })
+    );
+  };
+
   // const changeItemHandler = title => {
   //   setListItems(prevItems => [
   //     ...prevItems,
@@ -42,29 +58,20 @@ const TodoList = props => {
   //   ]);
   // };
 
-  let listItemsOutput = <p>lets add some todo item:)</p>;
-
-  if (listItems.length > 0) {
-    listItemsOutput = listItems.map(item => {
-      return (
-        <ListItem
-          key={item.date}
-          class={classes.TodoList__item}
-          removeListItem={removeListItem}
-          title={item.title}
-        />
-      );
-    });
-  }
-
   return (
     <div className={classes.TodoList}>
       <h1>ToDo List</h1>
-      <TodoForm onAddListItems={addListItem} />
-      <p>search section</p>
-      <ul>{listItemsOutput}</ul>
+      <TodoForm onAddListItem={addListItem} />
+      <ListItems
+        listItems={listItems}
+        onRemoveItem={removeListItem}
+        onCompleteItem={completeItem}
+        className={classes.TodoList__item}
+      />
+      {/* <p>search section</p> */}
+      {/* <ul>{listItemsOutput}</ul> */}
     </div>
   );
 };
 
-export default TodoList;
+export default React.memo(TodoList);

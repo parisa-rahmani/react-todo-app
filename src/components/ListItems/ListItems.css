@@ -1,0 +1,14 @@
+.ListItems {
+  width: 40vw;
+  margin: 3rem auto;
+  padding: 3rem 2rem;
+  /* box-shadow: -13px -13px 60px rgb(255 255 255),
+      inset 10px 10px 74px rgb(255 255 255),
+      inset -14px -14px 30px rgb(0 0 0 / 55%), 10px 10px 40px rgb(0 0 0 / 25%); */
+  box-shadow: 0px 0.5px 6px rgb(0 0 0 / 25%);
+  border-radius: 30px;
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
+  -ms-border-radius: 30px;
+  -o-border-radius: 30px;
+}

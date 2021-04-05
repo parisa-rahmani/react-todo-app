@@ -5,12 +5,20 @@ import Input from '../../UI/Input/Input';
 const TodoForm = props => {
   const [enteredTitle, setEnteredTitle] = useState('');
 
+  // const addListItem = listItem => {
+  //   if (listItem.title === '') return alert('enter something');
+  //   props.setListItems(prevListItems => [...prevListItems, { ...listItem }]);
+  // };
+
   const onSubmitForm = e => {
     e.preventDefault();
-    props.onAddListItems({ title: enteredTitle, date: new Date().getTime() });
+    props.onAddListItem({
+      title: enteredTitle,
+      date: new Date().getTime(),
+      isComplete: false,
+    });
     setEnteredTitle('');
   };
-
   const onChange = event => {
     setEnteredTitle(event.target.value);
   };
@@ -30,4 +38,4 @@ const TodoForm = props => {
   );
 };
 
-export default TodoForm;
+export default React.memo(TodoForm);

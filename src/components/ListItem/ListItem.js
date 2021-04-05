@@ -1,10 +1,20 @@
 import React from 'react';
+import classes from './ListItem.css';
 
 const listItem = props => {
+  let classNames = [];
+  if (props.isComplete) {
+    classNames = [classes.TodoList__item__completed];
+  }
   return (
-    <li className={props.class}>
-      <p>{props.title}</p>
-      <span onClick={() => props.removeListItem(props.key)}>Del</span>
+    <li className={classes.TodoList__item}>
+      <p className={classNames.join(' ')}>{props.title}</p>
+      <button name="delete" onClick={() => props.removeListItem(props.id)}>
+        Delete
+      </button>
+      <button name="complete" onClick={() => props.completeItem(props.id)}>
+        Complete
+      </button>
     </li>
   );
 };
