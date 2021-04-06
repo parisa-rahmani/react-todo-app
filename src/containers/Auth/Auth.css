@@ -20,6 +20,17 @@
   margin: 2rem 0;
 }
 
+.AuthForm h3 {
+  margin-bottom: 2rem;
+}
+
+.errorMessage {
+  color: red;
+  border-bottom: 1px solid red;
+  font-weight: bold;
+  padding: 0.5rem;
+}
+
 .AuthForm input,
 .AuthForm input:focus {
   width: 70%;
