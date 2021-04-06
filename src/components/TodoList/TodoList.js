@@ -1,15 +1,22 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import TodoForm from './TodoForm/TodoForm';
 import ListItems from '../ListItems/ListItems';
 import classes from './TodoList.css';
 import axios from 'axios';
+import { AuthContext } from '../../context/auth-context';
 
 const TodoList = () => {
   const [listItems, setListItems] = useState([]);
   const [addLoading, setAddLoading] = useState(false);
 
+  const authContext = useContext(AuthContext);
+
+  const userId = (authContext.userId = localStorage.getItem('userId'));
+  const token = (authContext.token = localStorage.getItem('token'));
+
   const initData = () => {
-    // const queryParams = `'?auth=${authContext.token}&orderBy="userId"&equalTo="${authContext.userId}"'`;
+    // const queryParams =
+    //   '?auth=' + token + '&orderBy="userId"&equalTo="' + userId + '"';
     // console.log(queryParams);
     // console.log(authContext.token);
     axios
@@ -33,6 +40,8 @@ const TodoList = () => {
     initData();
   }, []);
 
+  // console.log(listItems);
+
   const addListItem = listItem => {
     setAddLoading(true);
 
@@ -49,9 +58,11 @@ const TodoList = () => {
       )
       .then(response => {
         setAddLoading(false);
-
         const id = response.data.name;
-        setListItems(prevListItems => [...prevListItems, { ...listItem, id }]);
+        setListItems(prevListItems => [
+          ...prevListItems,
+          { ...listItem, id, userId },
+        ]);
       })
       .catch(error => {
         setAddLoading(false);
