@@ -2,24 +2,30 @@ import React, { useState } from 'react';
 
 export const AuthContext = React.createContext({
   isAuth: false,
+  token: null,
+  userId: null,
   login: () => {},
   logout: () => {},
 });
 
 const AuthContextProvider = props => {
   const [isAuthed, setIsAuthed] = useState(false);
-  const loginHandler = () => setIsAuthed(true);
+  const [tokenId, setTokenId] = useState(null);
+  const [idUser, setIdUser] = useState(null);
+
+  const loginHandler = () => {
+    setIsAuthed(true);
+    setTokenId(localStorage.getItem('token'));
+    setIdUser(localStorage.getItem('userId'));
+  };
   const logoutHandler = () => {
     setIsAuthed(false);
+    setTokenId(null);
+    setIdUser(null);
     localStorage.removeItem('token');
     localStorage.removeItem('expireDate');
     localStorage.removeItem('userId');
   };
-  // const removeAuthdataHandler = () => {
-  // localStorage.removeItem('token');
-  // localStorage.removeItem('expireDate');
-  // localStorage.removeItem('userId');
-  // };
 
   return (
     <AuthContext.Provider
@@ -27,6 +33,8 @@ const AuthContextProvider = props => {
         isAuth: isAuthed,
         login: loginHandler,
         logout: logoutHandler,
+        token: tokenId,
+        userId: idUser,
       }}
     >
       {props.children}

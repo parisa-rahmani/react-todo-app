@@ -49,6 +49,10 @@ const Auth = props => {
     if (!token) {
       logout();
     } else {
+      authContext.token = token;
+      authContext.userId = userId;
+
+      // console.log(authContext.token);
       setAuthData(prevAuthData => {
         return { ...prevAuthData, token: token, userId: userId };
       });
@@ -102,6 +106,9 @@ const Auth = props => {
         localStorage.setItem('token', res.data.idToken);
         localStorage.setItem('expireDate', expireDate);
         localStorage.setItem('userId', res.data.localId);
+
+        authContext.token = res.data.idToken;
+        authContext.userId = res.data.localId;
 
         setAuthData(prevAuthData => {
           return {

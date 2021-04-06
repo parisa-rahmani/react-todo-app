@@ -9,12 +9,18 @@ const TodoList = () => {
   const [addLoading, setAddLoading] = useState(false);
 
   const initData = () => {
+    // const queryParams = `'?auth=${authContext.token}&orderBy="userId"&equalTo="${authContext.userId}"'`;
+    // console.log(queryParams);
+    // console.log(authContext.token);
     axios
       .get('https://todo-app-d1d29-default-rtdb.firebaseio.com/todoitems.json')
       .then(response => {
         let transformData = [];
         for (let key in response.data) {
-          transformData.push({ ...response.data[key], id: key });
+          transformData.push({
+            ...response.data[key],
+            id: key,
+          });
         }
         setListItems(transformData);
       })
@@ -26,8 +32,6 @@ const TodoList = () => {
   useEffect(() => {
     initData();
   }, []);
-
-  // console.log(listItems);
 
   const addListItem = listItem => {
     setAddLoading(true);
@@ -77,7 +81,6 @@ const TodoList = () => {
 
   const completeItem = id => {
     const compItem = listItems.find(item => item.id === id);
-    // console.log(compItem);
 
     axios
       .patch(
