@@ -4,7 +4,6 @@ import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import { BrowserRouter } from 'react-router-dom';
-import AuthContextProvider from './context/auth-context';
 
 //redux
 import { createStore, applyMiddleware, compose, combineReducers } from 'redux';
@@ -26,9 +25,7 @@ const store = createStore(
 const app = (
   <Provider store={store}>
     <BrowserRouter>
-      <AuthContextProvider>
-        <App />
-      </AuthContextProvider>
+      <App />
     </BrowserRouter>
   </Provider>
 );
