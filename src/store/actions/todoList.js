@@ -1,7 +1,7 @@
 import * as actionTypes from './actionTypes';
 import axios from 'axios';
 
-export const setListItems = listItems => {
+export const setListItems = (listItems, userId) => {
   let transformData = [];
   for (let key in listItems) {
     transformData.push({
@@ -9,9 +9,12 @@ export const setListItems = listItems => {
       id: key,
     });
   }
+  console.log(listItems);
+  console.log(transformData);
   return {
     type: actionTypes.SET_LISTITEMS,
-    listItems: transformData,
+    // listItems: transformData,
+    listItems: transformData.filter(item => item.userId === userId),
   };
 };
 
@@ -25,11 +28,11 @@ export const initListItems = (token, userId) => {
   return dispatch => {
     axios
       .get(
-        'https://todo-app-d1d29-default-rtdb.firebaseio.com/todoitems.json?auth' +
+        'https://todo-app-d1d29-default-rtdb.firebaseio.com/todoitems.json?auth=' +
           token
       )
       .then(response => {
-        dispatch(setListItems(response.data));
+        dispatch(setListItems(response.data, userId));
       })
       .catch(error => {
         dispatch(fetchListItemsFailed());

@@ -10,13 +10,17 @@ const TodoList = props => {
   const [addLoading, setAddLoading] = useState(false);
 
   useEffect(() => {
-    props.onInitListItems(props.token);
+    props.onInitListItems(props.token, props.userId);
   }, []);
 
   return (
     <div className={classes.TodoList}>
       <h1>ToDo List</h1>
-      <TodoForm loading={addLoading} onAddListItem={props.onAddListItem} />
+      <TodoForm
+        loading={addLoading}
+        userId={props.userId}
+        onAddListItem={props.onAddListItem}
+      />
       <ListItems
         listItems={props.LItems}
         onRemoveItem={props.onRemoveListItem}
@@ -32,12 +36,14 @@ const mapStateToProps = state => {
     LItems: state.todoList.listItems,
     err: state.todoList.error,
     token: state.auth.token,
+    userId: state.auth.userId,
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    onInitListItems: token => dispatch(actions.initListItems(token)),
+    onInitListItems: (token, userId) =>
+      dispatch(actions.initListItems(token, userId)),
     onAddListItem: item => dispatch(actions.addListItemStart(item)),
     onRemoveListItem: id => dispatch(actions.removeListItemStart(id)),
     onCompleteListItem: (listItems, id) =>

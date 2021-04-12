@@ -1,14 +1,10 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import classes from './TodoForm.css';
 import Input from '../UI/Input/Input';
 import Spinner from '../UI/Spinner/Spinner';
 
-import { AuthContext } from '../../context/auth-context';
-
 const TodoForm = props => {
   const [enteredTitle, setEnteredTitle] = useState('');
-
-  const authContext = useContext(AuthContext);
 
   const onSubmitForm = e => {
     e.preventDefault();
@@ -16,7 +12,7 @@ const TodoForm = props => {
       title: enteredTitle,
       date: new Date().getTime(),
       isComplete: false,
-      userId: authContext.userId,
+      userId: props.userId,
     });
     setEnteredTitle('');
   };
