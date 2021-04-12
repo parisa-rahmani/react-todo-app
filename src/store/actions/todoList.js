@@ -9,8 +9,6 @@ export const setListItems = (listItems, userId) => {
       id: key,
     });
   }
-  console.log(listItems);
-  console.log(transformData);
   return {
     type: actionTypes.SET_LISTITEMS,
     // listItems: transformData,
