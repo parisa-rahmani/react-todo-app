@@ -13,7 +13,10 @@ const listItem = props => {
       <button name="delete" onClick={() => props.removeListItem(props.id)}>
         Delete
       </button>
-      <button name="complete" onClick={() => props.completeItem(props.id)}>
+      <button
+        name="complete"
+        onClick={() => props.completeItem(props.listItemss, props.id)}
+      >
         Complete
       </button>
     </li>

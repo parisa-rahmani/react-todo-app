@@ -11,6 +11,7 @@ const listItems = ({ listItems, onRemoveItem, onCompleteItem }) => {
         key={item.date}
         id={item.id}
         title={item.title}
+        listItemss={listItems}
         removeListItem={onRemoveItem}
         completeItem={onCompleteItem}
         isComplete={item.isComplete}

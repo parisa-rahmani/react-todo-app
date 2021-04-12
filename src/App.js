@@ -5,7 +5,7 @@ import { AuthContext } from './context/auth-context';
 
 // components
 import Layout from './containers/Layout/Layout';
-import TodoList from './components/TodoList/TodoList';
+import TodoList from './containers/TodoList/TodoList';
 import Auth from './containers/Auth/Auth';
 import Logout from './containers/Auth/Logout/Logout';
 

@@ -1,9 +1,9 @@
 import React, { useContext, useState } from 'react';
 import classes from './TodoForm.css';
-import Input from '../../UI/Input/Input';
-import Spinner from '../../UI/Spinner/Spinner';
+import Input from '../UI/Input/Input';
+import Spinner from '../UI/Spinner/Spinner';
 
-import { AuthContext } from '../../../context/auth-context';
+import { AuthContext } from '../../context/auth-context';
 
 const TodoForm = props => {
   const [enteredTitle, setEnteredTitle] = useState('');
@@ -38,7 +38,9 @@ const TodoForm = props => {
           change={onChange}
         />
         {spinner}
-        <button type="submit">+</button>
+        <button type="submit" disabled={enteredTitle === ''}>
+          +
+        </button>
       </form>
     </div>
   );

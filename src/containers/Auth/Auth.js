@@ -30,6 +30,18 @@ const Auth = props => {
     setIsSignup(!isSignup);
   };
 
+  useEffect(() => {
+    let mount = true;
+    if (mount) {
+      // checkAuthState();
+      auth(emailValue, passwordValue, isSignup);
+    }
+    return () => {
+      clearTimeout();
+      mount = false;
+    };
+  }, []);
+
   const logout = () => {
     setIsSignup(true);
     setAuthData(prevAuthData => {
@@ -70,17 +82,8 @@ const Auth = props => {
     }, expireTime * 1000);
   };
 
-  useEffect(() => {
-    checkAuthState();
-  }, []);
-
-  useEffect(() => {
-    return () => {
-      clearTimeout();
-    };
-  }, []);
-
   const auth = (email, password, isSignup) => {
+    if (!email) return;
     const authData = {
       email: email,
       password: password,
