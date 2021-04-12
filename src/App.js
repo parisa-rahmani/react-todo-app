@@ -1,16 +1,18 @@
-import React, { useContext } from 'react';
+import React, { useEffect } from 'react';
 import classes from './App.css';
-import { Route, Switch, Redirect } from 'react-router-dom';
-import { AuthContext } from './context/auth-context';
-
+import { Route, Switch, Redirect, withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
+import * as actions from './store/actions/index';
 // components
 import Layout from './containers/Layout/Layout';
 import TodoList from './containers/TodoList/TodoList';
 import Auth from './containers/Auth/Auth';
 import Logout from './containers/Auth/Logout/Logout';
 
-const App = () => {
-  const authContext = useContext(AuthContext);
+const App = props => {
+  useEffect(() => {
+    props.onAutoSignIn();
+  }, []);
 
   let routes = (
     <Switch>
@@ -20,7 +22,7 @@ const App = () => {
     </Switch>
   );
 
-  if (authContext.isAuth) {
+  if (props.isAuth) {
     routes = (
       <Switch>
         <Route path="/auth" component={Auth} />
@@ -38,4 +40,15 @@ const App = () => {
   );
 };
 
-export default App;
+const mapStateToProps = state => {
+  return {
+    isAuth: state.auth.token !== null,
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    onAutoSignIn: () => dispatch(actions.checkAuthState()),
+  };
+};
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));

@@ -21,10 +21,13 @@ export const fetchListItemsFailed = () => {
   };
 };
 
-export const initListItems = () => {
+export const initListItems = (token, userId) => {
   return dispatch => {
     axios
-      .get('https://todo-app-d1d29-default-rtdb.firebaseio.com/todoitems.json')
+      .get(
+        'https://todo-app-d1d29-default-rtdb.firebaseio.com/todoitems.json?auth' +
+          token
+      )
       .then(response => {
         dispatch(setListItems(response.data));
       })

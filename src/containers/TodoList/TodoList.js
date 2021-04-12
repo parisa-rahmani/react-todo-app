@@ -1,11 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import {
-  initListItems,
-  addListItemStart,
-  removeListItemStart,
-  completeItemStart,
-} from '../../store/actions/todoList';
+import * as actions from '../../store/actions/todoList';
 
 import TodoForm from '../../components/TodoForm/TodoForm';
 import ListItems from '../../components/ListItems/ListItems';
@@ -15,7 +10,7 @@ const TodoList = props => {
   const [addLoading, setAddLoading] = useState(false);
 
   useEffect(() => {
-    props.onInitListItems();
+    props.onInitListItems(props.token);
   }, []);
 
   return (
@@ -34,18 +29,19 @@ const TodoList = props => {
 
 const mapStateToProps = state => {
   return {
-    LItems: state.listItems,
-    err: state.error,
+    LItems: state.todoList.listItems,
+    err: state.todoList.error,
+    token: state.auth.token,
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    onInitListItems: () => dispatch(initListItems()),
-    onAddListItem: item => dispatch(addListItemStart(item)),
-    onRemoveListItem: id => dispatch(removeListItemStart(id)),
+    onInitListItems: token => dispatch(actions.initListItems(token)),
+    onAddListItem: item => dispatch(actions.addListItemStart(item)),
+    onRemoveListItem: id => dispatch(actions.removeListItemStart(id)),
     onCompleteListItem: (listItems, id) =>
-      dispatch(completeItemStart(listItems, id)),
+      dispatch(actions.completeItemStart(listItems, id)),
   };
 };
 
