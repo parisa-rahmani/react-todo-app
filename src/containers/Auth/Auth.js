@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import * as actions from '../../store/actions/index';
@@ -24,21 +24,8 @@ const Auth = props => {
     setIsSignup(!isSignup);
   };
 
-  useEffect(() => {
-    let mount = true;
-    if (mount) {
-      // checkAuthState();
-      // auth(emailValue, passwordValue, isSignup);
-    }
-    return () => {
-      // clearTimeout();
-      mount = false;
-    };
-  }, []);
-
   const submitHandler = e => {
     e.preventDefault();
-    // authContext.login();
     props.onAuth(emailValue, passwordValue, isSignup);
   };
 

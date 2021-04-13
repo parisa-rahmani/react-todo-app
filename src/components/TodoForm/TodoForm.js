@@ -22,7 +22,7 @@ const TodoForm = props => {
   };
 
   let spinner = null;
-  if (props.loading) spinner = <Spinner />;
+  // if (props.loading) spinner = <Spinner />;
 
   return (
     <div className={classes.TodoForm}>

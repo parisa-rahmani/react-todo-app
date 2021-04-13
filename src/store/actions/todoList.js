@@ -16,6 +16,12 @@ export const setListItems = (listItems, userId) => {
   };
 };
 
+export const fetchListItemsStart = () => {
+  return {
+    type: actionTypes.FETCH_LISTITEMS_START,
+  };
+};
+
 export const fetchListItemsFailed = () => {
   return {
     type: actionTypes.FETCH_LISTITEMS_FAILED,
@@ -24,6 +30,7 @@ export const fetchListItemsFailed = () => {
 
 export const initListItems = (token, userId) => {
   return dispatch => {
+    dispatch(fetchListItemsStart());
     axios
       .get(
         'https://todo-app-d1d29-default-rtdb.firebaseio.com/todoitems.json?auth=' +
@@ -99,6 +106,12 @@ export const removeListItemStart = id => {
 };
 
 // completing
+export const completeItemStarting = () => {
+  return {
+    type: actionTypes.COMPLETE_LISTITEM_STARTING,
+  };
+};
+
 export const completeItemSuccess = id => {
   return {
     type: actionTypes.COMPLETE_LISTITEM_SUCCESS,
@@ -114,6 +127,7 @@ export const completeItemFail = () => {
 
 export const completeItemStart = (listItems, id) => {
   return dispatch => {
+    dispatch(completeItemStarting());
     const compItem = listItems.find(item => item.id === id);
     axios
       .patch(

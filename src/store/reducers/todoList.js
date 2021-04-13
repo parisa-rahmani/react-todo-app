@@ -3,6 +3,8 @@ import * as actionTypes from '../actions/actionTypes';
 const initialState = {
   listItems: [],
   error: null,
+  loading: false,
+  compBtnloader: false,
 };
 
 const reducer = (state = initialState, action) => {
@@ -12,11 +14,18 @@ const reducer = (state = initialState, action) => {
         ...state,
         listItems: action.listItems,
         error: false,
+        loading: false,
+      };
+    case actionTypes.FETCH_LISTITEMS_START:
+      return {
+        ...state,
+        loading: true,
       };
     case actionTypes.FETCH_LISTITEMS_FAILED:
       return {
         ...state,
         error: true,
+        loading: false,
       };
 
     case actionTypes.ADD_LISTITEM_SUCCESS:
@@ -35,6 +44,12 @@ const reducer = (state = initialState, action) => {
         listItems: state.listItems.filter(item => item.id !== action.removedID),
       };
 
+    case actionTypes.COMPLETE_LISTITEM_STARTING:
+      return {
+        ...state,
+        compBtnloader: true,
+      };
+
     case actionTypes.COMPLETE_LISTITEM_SUCCESS:
       const completedItem = state.listItems.find(
         item => item.id === action.completedItemID
@@ -50,6 +65,12 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         listItems: upState,
+        compBtnloader: false,
+      };
+    case actionTypes.COMPLETE_LISTITEM_FAIL:
+      return {
+        ...state,
+        compBtnloader: false,
       };
     default:
       return state;

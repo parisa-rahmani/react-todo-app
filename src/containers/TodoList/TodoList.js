@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../../store/actions/todoList';
 
@@ -7,24 +7,29 @@ import ListItems from '../../components/ListItems/ListItems';
 import classes from './TodoList.css';
 
 const TodoList = props => {
-  const [addLoading, setAddLoading] = useState(false);
+  // const { onInitListItems } = props;
 
-  useEffect(() => {
-    props.onInitListItems(props.token, props.userId);
-  }, []);
+  // useEffect(() => {
+  //   onInitListItems(props.token, props.userId);
+  // }, [onInitListItems]);
+
+  // useEffect(() => {
+  //   console.log('rerender from TodoList container', LItems);
+  // }, [LItems]);
 
   return (
     <div className={classes.TodoList}>
       <h1>ToDo List</h1>
-      <TodoForm
-        loading={addLoading}
-        userId={props.userId}
-        onAddListItem={props.onAddListItem}
-      />
+      <TodoForm userId={props.userId} onAddListItem={props.onAddListItem} />
       <ListItems
+        onInitData={props.onInitListItems}
+        token={props.token}
+        userId={props.userId}
+        loadingItems={props.loading}
         listItems={props.LItems}
         onRemoveItem={props.onRemoveListItem}
         onCompleteItem={props.onCompleteListItem}
+        completeLoader={props.compBtnloader}
         className={classes.TodoList__item}
       />
     </div>
@@ -35,6 +40,8 @@ const mapStateToProps = state => {
   return {
     LItems: state.todoList.listItems,
     err: state.todoList.error,
+    loading: state.todoList.loading,
+    compBtnloader: state.todoList.compBtnloader,
     token: state.auth.token,
     userId: state.auth.userId,
   };
