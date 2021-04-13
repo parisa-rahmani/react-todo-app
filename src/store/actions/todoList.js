@@ -113,12 +113,6 @@ export const removeListItemStart = id => {
 };
 
 // completing
-export const completeItemStarting = () => {
-  return {
-    type: actionTypes.COMPLETE_LISTITEM_STARTING,
-  };
-};
-
 export const completeItemSuccess = id => {
   return {
     type: actionTypes.COMPLETE_LISTITEM_SUCCESS,
@@ -134,7 +128,6 @@ export const completeItemFail = () => {
 
 export const completeItemStart = (listItems, id) => {
   return dispatch => {
-    dispatch(completeItemStarting());
     const compItem = listItems.find(item => item.id === id);
     axios
       .patch(

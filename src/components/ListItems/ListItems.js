@@ -29,7 +29,6 @@ const listItems = props => {
         removeListItem={onRemoveItem}
         completeItem={onCompleteItem}
         isComplete={item.isComplete}
-        completeLoding={props.completeLoader}
       />
     ));
   }

@@ -4,7 +4,6 @@ const initialState = {
   listItems: [],
   error: null,
   loading: false,
-  compBtnloader: false,
   addLoader: false,
 };
 
@@ -58,12 +57,6 @@ const reducer = (state = initialState, action) => {
         listItems: state.listItems.filter(item => item.id !== action.removedID),
       };
 
-    case actionTypes.COMPLETE_LISTITEM_STARTING:
-      return {
-        ...state,
-        compBtnloader: true,
-      };
-
     case actionTypes.COMPLETE_LISTITEM_SUCCESS:
       const completedItem = state.listItems.find(
         item => item.id === action.completedItemID
@@ -79,12 +72,10 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         listItems: upState,
-        compBtnloader: false,
       };
     case actionTypes.COMPLETE_LISTITEM_FAIL:
       return {
         ...state,
-        compBtnloader: false,
       };
     default:
       return state;

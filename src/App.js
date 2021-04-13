@@ -10,14 +10,15 @@ import Auth from './containers/Auth/Auth';
 import Logout from './containers/Auth/Logout/Logout';
 
 const App = props => {
+  const { onAutoSignIn } = props;
+
   useEffect(() => {
-    props.onAutoSignIn();
-  }, []);
+    onAutoSignIn();
+  }, [onAutoSignIn]);
 
   let routes = (
     <Switch>
       <Route path="/auth" component={Auth} />
-      {/* <Route path="/" exact component={TodoList} /> */}
       <Redirect to="/auth" />
     </Switch>
   );

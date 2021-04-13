@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../../store/actions/todoList';
 
@@ -7,12 +7,6 @@ import ListItems from '../../components/ListItems/ListItems';
 import classes from './TodoList.css';
 
 const TodoList = props => {
-  // const { onInitListItems } = props;
-
-  // useEffect(() => {
-  //   onInitListItems(props.token, props.userId);
-  // }, [onInitListItems]);
-
   // useEffect(() => {
   //   console.log('rerender from TodoList container', LItems);
   // }, [LItems]);
@@ -33,7 +27,6 @@ const TodoList = props => {
         listItems={props.LItems}
         onRemoveItem={props.onRemoveListItem}
         onCompleteItem={props.onCompleteListItem}
-        completeLoader={props.compBtnloader}
         className={classes.TodoList__item}
       />
     </div>
@@ -46,7 +39,6 @@ const mapStateToProps = state => {
     err: state.todoList.error,
     loading: state.todoList.loading,
     addLoader: state.todoList.addLoader,
-    compBtnloader: state.todoList.compBtnloader,
     token: state.auth.token,
     userId: state.auth.userId,
   };

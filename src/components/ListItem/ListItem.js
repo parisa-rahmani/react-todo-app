@@ -1,17 +1,10 @@
 import React from 'react';
-import Spinner from '../UI/Spinner/Spinner';
 import classes from './ListItem.css';
 
 const listItem = props => {
   let classNames = [];
   if (props.isComplete) {
     classNames = [classes.TodoList__item__completed];
-  }
-
-  let compBtnInner = 'Complete';
-
-  if (props.completeLoding) {
-    compBtnInner = <Spinner />;
   }
 
   return (
@@ -24,7 +17,7 @@ const listItem = props => {
         name="complete"
         onClick={() => props.completeItem(props.listItemss, props.id)}
       >
-        {compBtnInner}
+        Complete
       </button>
     </li>
   );
