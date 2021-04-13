@@ -20,7 +20,11 @@ const TodoList = props => {
   return (
     <div className={classes.TodoList}>
       <h1>ToDo List</h1>
-      <TodoForm userId={props.userId} onAddListItem={props.onAddListItem} />
+      <TodoForm
+        userId={props.userId}
+        loading={props.addLoader}
+        onAddListItem={props.onAddListItem}
+      />
       <ListItems
         onInitData={props.onInitListItems}
         token={props.token}
@@ -41,6 +45,7 @@ const mapStateToProps = state => {
     LItems: state.todoList.listItems,
     err: state.todoList.error,
     loading: state.todoList.loading,
+    addLoader: state.todoList.addLoader,
     compBtnloader: state.todoList.compBtnloader,
     token: state.auth.token,
     userId: state.auth.userId,

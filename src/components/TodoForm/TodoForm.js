@@ -21,8 +21,12 @@ const TodoForm = props => {
     setEnteredTitle(event.target.value);
   };
 
-  let spinner = null;
-  // if (props.loading) spinner = <Spinner />;
+  let addBtn = (
+    <button type="submit" disabled={enteredTitle === ''}>
+      +
+    </button>
+  );
+  if (props.loading) addBtn = <Spinner />;
 
   return (
     <div className={classes.TodoForm}>
@@ -33,10 +37,7 @@ const TodoForm = props => {
           value={enteredTitle}
           change={onChange}
         />
-        {spinner}
-        <button type="submit" disabled={enteredTitle === ''}>
-          +
-        </button>
+        {addBtn}
       </form>
     </div>
   );

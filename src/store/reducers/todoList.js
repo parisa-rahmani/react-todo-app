@@ -5,6 +5,7 @@ const initialState = {
   error: null,
   loading: false,
   compBtnloader: false,
+  addLoader: false,
 };
 
 const reducer = (state = initialState, action) => {
@@ -28,6 +29,12 @@ const reducer = (state = initialState, action) => {
         loading: false,
       };
 
+    case actionTypes.ADD_LISTITEM_STARTING:
+      return {
+        ...state,
+        addLoader: true,
+      };
+
     case actionTypes.ADD_LISTITEM_SUCCESS:
       const newListItem = {
         ...action.listItem,
@@ -36,6 +43,13 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         listItems: state.listItems.concat(newListItem),
+        addLoader: false,
+      };
+
+    case actionTypes.ADD_LISTITEM_FAIL:
+      return {
+        ...state,
+        addLoader: false,
       };
 
     case actionTypes.REMOVE_LISTITEM_SUCCESS:

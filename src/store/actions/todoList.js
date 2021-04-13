@@ -46,6 +46,12 @@ export const initListItems = (token, userId) => {
 };
 
 //adding
+export const addListItemStarting = () => {
+  return {
+    type: actionTypes.ADD_LISTITEM_STARTING,
+  };
+};
+
 export const addListItemSucces = (item, id) => {
   return {
     type: actionTypes.ADD_LISTITEM_SUCCESS,
@@ -62,6 +68,7 @@ export const addListItemFail = () => {
 
 export const addListItemStart = listData => {
   return dispatch => {
+    dispatch(addListItemStarting());
     axios
       .post(
         'https://todo-app-d1d29-default-rtdb.firebaseio.com/todoitems.json',

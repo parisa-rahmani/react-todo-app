@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem;
+  padding: 0.7rem;
   width: 85%;
   margin: 0.5rem auto;
   list-style-type: none;
@@ -39,6 +39,7 @@
   border: none;
   font-weight: bold;
   font-size: 0.7rem;
+  height: 2rem;
 }
 
 .TodoList__item button[name='delete'] {
