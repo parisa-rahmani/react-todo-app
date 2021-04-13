@@ -14,11 +14,11 @@
 .TodoForm form {
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
 }
 
-.TodoForm input,
+/* .TodoForm input,
 .TodoForm input:focus {
   width: 60%;
   outline: none;
@@ -29,9 +29,9 @@
   -ms-border-radius: 10px;
   -o-border-radius: 10px;
   padding: 0.8rem 1rem;
-}
+} */
 
-.TodoForm button,
+/* .TodoForm button,
 .TodoForm button:active,
 .TodoForm button:hover {
   font-weight: bold;
@@ -54,25 +54,20 @@
   -moz-transition: all 0.3s;
   -ms-transition: all 0.3s;
   -o-transition: all 0.3s;
-}
+} */
 
-.TodoForm button:active {
+/* .TodoForm button:active {
   transform: translateY(2px);
   -webkit-transform: translateY(2px);
   -moz-transform: translateY(2px);
   -ms-transform: translateY(2px);
   -o-transform: translateY(2px);
-}
+} */
 
 @media (min-width: 650px) {
   .TodoForm {
     font-size: 1rem;
     width: 45vw;
     padding: 1.2rem;
-  }
-
-  .TodoForm input,
-  .TodoForm input:focus {
-    width: 60%;
   }
 }
