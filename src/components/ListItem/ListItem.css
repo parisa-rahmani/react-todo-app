@@ -34,11 +34,8 @@
 
 .TodoList__item button {
   cursor: pointer;
-  margin: 0 0.3rem;
   outline: none;
   border: none;
-  font-weight: bold;
-  font-size: 0.7rem;
   height: 2rem;
 }
 

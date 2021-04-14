@@ -17,7 +17,7 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  margin: 2rem 0;
+  margin: 2rem 0 1rem;
 }
 
 .AuthForm h3 {
@@ -31,32 +31,12 @@
   padding: 0.5rem;
 }
 
-.AuthForm input,
-.AuthForm input:focus {
-  width: 70%;
-  outline: none;
-  border: 1px solid rgb(57, 163, 235);
-  border-radius: 10px;
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
-  -ms-border-radius: 10px;
-  -o-border-radius: 10px;
-  padding: 0.8rem 1rem;
-  margin: 0.6rem 0;
-}
-
 .AuthForm button,
 .AuthForm button:active,
 .AuthForm button:hover {
   font-weight: bold;
   outline: none;
-  border: 1px solid rgb(57, 163, 235);
-  border-radius: 10px;
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
-  -ms-border-radius: 10px;
-  -o-border-radius: 10px;
-  padding: 0.8rem 1rem;
+  padding: 0.5rem 1rem;
   cursor: pointer;
   transform: translateY(0);
   -webkit-transform: translateY(0);
@@ -83,10 +63,5 @@
     font-size: 1rem;
     width: 45vw;
     padding: 1.2rem;
-  }
-
-  .AuthForm input,
-  .AuthForm input:focus {
-    width: 60%;
   }
 }

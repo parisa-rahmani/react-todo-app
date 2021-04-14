@@ -5,6 +5,7 @@
 .TodoList h1 {
   margin-bottom: 2rem;
   font-size: 1.5rem;
+  color: #3345aa;
 }
 
 @media (min-width: 650px) {

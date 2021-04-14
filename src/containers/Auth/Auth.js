@@ -4,10 +4,11 @@ import { connect } from 'react-redux';
 import * as actions from '../../store/actions/index';
 
 //components
-import Input from '../../components/UI/Input/Input';
 import Spinner from '../../components/UI/Spinner/Spinner';
-
 import classes from './Auth.css';
+
+import { Button, TextField } from '@material-ui/core';
+import * as style from '../../Mui/MuiStyles';
 
 const Auth = props => {
   const [isSignup, setIsSignup] = useState(true);
@@ -31,24 +32,41 @@ const Auth = props => {
 
   let form = (
     <React.Fragment>
-      <form onSubmit={submitHandler}>
-        <Input
+      <form onSubmit={submitHandler} autoComplete="off">
+        <TextField
+          color="primary"
+          label="Email"
+          size="medium"
+          variant="outlined"
+          className={style.authInputClass().root}
           type="email"
-          placeholder="enter email"
+          placeholder="Enter Your Email"
           value={emailValue}
-          change={emailChangeHandler}
+          onChange={emailChangeHandler}
         />
-        <Input
+        <TextField
+          color="primary"
+          label="Password"
+          size="medium"
+          variant="outlined"
+          className={style.authInputClass().root}
           type="password"
-          placeholder="enter password"
+          placeholder="Enter Your Password"
           value={passwordValue}
-          change={passwordChangeHandler}
+          onChange={passwordChangeHandler}
         />
-        <button>submit</button>
+        <Button variant="contained" color="primary" size="small" type="submit">
+          submit
+        </Button>
       </form>
-      <button onClick={switchAuthModeHandler}>
+      <Button
+        size="small"
+        variant="contained"
+        color="primary"
+        onClick={switchAuthModeHandler}
+      >
         switch to {isSignup ? 'sign in' : 'sign up'}
-      </button>
+      </Button>
     </React.Fragment>
   );
 

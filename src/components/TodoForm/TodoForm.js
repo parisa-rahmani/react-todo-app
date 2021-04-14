@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
 import classes from './TodoForm.css';
-// import Input from '../UI/Input/Input';
 import Spinner from '../UI/Spinner/Spinner';
 
 import { Button, TextField } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
 import AddBoxIcon from '@material-ui/icons/AddBox';
+import * as style from '../../Mui/MuiStyles';
 
 const TodoForm = props => {
   const [enteredTitle, setEnteredTitle] = useState('');
@@ -25,36 +24,6 @@ const TodoForm = props => {
     setEnteredTitle(event.target.value);
   };
 
-  const classbtn = makeStyles({
-    root: {
-      minWidth: '2rem',
-      padding: 0,
-    },
-  })();
-  const inputStyle = makeStyles({
-    root: {
-      width: '60%',
-      '& .MuiInputBase-input': {
-        color: 'blue',
-      },
-      '& label': {
-        color: 'cadetblue',
-      },
-      '& label.Mui-focused': {
-        color: 'blue',
-      },
-      '& .MuiOutlinedInput-root': {
-        '& fieldset': {
-          borderColor: 'blue',
-          borderWidth: '1.5px',
-        },
-        '&:hover fieldset': {
-          borderColor: 'blue',
-        },
-      },
-    },
-  })();
-
   let addBtn = (
     <Button
       variant="text"
@@ -62,7 +31,7 @@ const TodoForm = props => {
       color="primary"
       type="submit"
       disabled={enteredTitle === ''}
-      className={classbtn.root}
+      className={style.classAddBtn().root}
     >
       <AddBoxIcon style={{ fontSize: '2.5rem' }} />
     </Button>
@@ -81,7 +50,7 @@ const TodoForm = props => {
           placeholder="type here"
           value={enteredTitle}
           onChange={onChange}
-          className={inputStyle.root}
+          className={style.inputStyle().root}
         />
         {addBtn}
       </form>
