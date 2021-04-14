@@ -12,7 +12,11 @@ import { Provider } from 'react-redux';
 import todoListReducer from './store/reducers/todoList';
 import authReducer from './store/reducers/auth';
 
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const composeEnhancers =
+  process.env.NODE_ENN === 'development'
+    ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+    : null || compose;
+
 const rootReducer = combineReducers({
   todoList: todoListReducer,
   auth: authReducer,
