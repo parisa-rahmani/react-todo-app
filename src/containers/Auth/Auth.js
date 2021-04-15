@@ -25,6 +25,8 @@ const Auth = props => {
     setIsSignup(!isSignup);
   };
 
+  console.log('hi');
+
   const submitHandler = e => {
     e.preventDefault();
     props.onAuth(emailValue, passwordValue, isSignup);
