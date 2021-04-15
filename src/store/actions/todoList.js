@@ -22,9 +22,10 @@ export const fetchListItemsStart = () => {
   };
 };
 
-export const fetchListItemsFailed = () => {
+export const fetchListItemsFailed = error => {
   return {
     type: actionTypes.FETCH_LISTITEMS_FAILED,
+    error: error,
   };
 };
 
@@ -40,7 +41,7 @@ export const initListItems = (token, userId) => {
         dispatch(setListItems(response.data, userId));
       })
       .catch(error => {
-        dispatch(fetchListItemsFailed());
+        dispatch(fetchListItemsFailed(error));
       });
   };
 };

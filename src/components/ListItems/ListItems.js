@@ -40,9 +40,20 @@ const listItems = props => {
     listItemsOutput = null;
   }
 
+  let errorMessage = null;
+  if (props.errorMessage) {
+    spinner = null;
+    listItemsOutput = null;
+    errorMessage = (
+      <p style={{ color: 'red' }}>
+        !something went wrong. <br /> checking your internet connection.
+      </p>
+    );
+  }
   return (
     <ul className={classes.ListItems}>
       {spinner}
+      {errorMessage}
       {listItemsOutput}
     </ul>
   );

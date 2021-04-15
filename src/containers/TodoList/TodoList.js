@@ -21,6 +21,7 @@ const TodoList = props => {
       />
       <ListItems
         onInitData={props.onInitListItems}
+        errorMessage={props.err}
         token={props.token}
         userId={props.userId}
         loadingItems={props.loading}

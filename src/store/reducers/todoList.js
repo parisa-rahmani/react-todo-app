@@ -13,18 +13,19 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         listItems: action.listItems,
-        error: false,
+        error: null,
         loading: false,
       };
     case actionTypes.FETCH_LISTITEMS_START:
       return {
         ...state,
         loading: true,
+        error: null,
       };
     case actionTypes.FETCH_LISTITEMS_FAILED:
       return {
         ...state,
-        error: true,
+        error: action.error,
         loading: false,
       };
 
