@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import ListItem from '../ListItem/ListItem';
 import Spinner from '../UI/Spinner/Spinner';
 import classes from './ListItems.css';
+import { AnimatePresence } from 'framer-motion';
 
 const listItems = props => {
   const {
@@ -54,7 +55,7 @@ const listItems = props => {
     <ul className={classes.ListItems}>
       {spinner}
       {errorMessage}
-      {listItemsOutput}
+      <AnimatePresence>{listItemsOutput}</AnimatePresence>
     </ul>
   );
 };

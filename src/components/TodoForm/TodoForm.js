@@ -5,6 +5,7 @@ import Spinner from '../UI/Spinner/Spinner';
 import { Button, TextField } from '@material-ui/core';
 import AddBoxIcon from '@material-ui/icons/AddBox';
 import * as style from '../../Mui/MuiStyles';
+import { motion } from 'framer-motion';
 
 const TodoForm = props => {
   const [enteredTitle, setEnteredTitle] = useState('');
@@ -25,16 +26,18 @@ const TodoForm = props => {
   };
 
   let addBtn = (
-    <Button
-      variant="text"
-      size="medium"
-      color="primary"
-      type="submit"
-      disabled={enteredTitle === ''}
-      className={style.classAddBtn().root}
-    >
-      <AddBoxIcon style={{ fontSize: '2.5rem' }} />
-    </Button>
+    <motion.label whileHover={{ rotateZ: 360 }} transition={{ duration: 0.7 }}>
+      <Button
+        variant="text"
+        size="medium"
+        color="primary"
+        type="submit"
+        disabled={enteredTitle === ''}
+        className={style.classAddBtn().root}
+      >
+        <AddBoxIcon style={{ fontSize: '2.5rem' }} />
+      </Button>
+    </motion.label>
   );
   if (props.loading) addBtn = <Spinner />;
 
