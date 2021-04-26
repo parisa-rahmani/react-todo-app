@@ -6,6 +6,8 @@ import TodoForm from '../../components/TodoForm/TodoForm';
 import ListItems from '../../components/ListItems/ListItems';
 import classes from './TodoList.css';
 
+import { motion } from 'framer-motion';
+
 const TodoList = props => {
   // useEffect(() => {
   //   console.log('rerender from TodoList container', LItems);
@@ -13,7 +15,13 @@ const TodoList = props => {
 
   return (
     <div className={classes.TodoList}>
-      <h1>ToDo List</h1>
+      <motion.h1
+        initial={{ y: -200 }}
+        animate={{ y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        ToDo List
+      </motion.h1>
       <TodoForm
         userId={props.userId}
         loading={props.addLoader}

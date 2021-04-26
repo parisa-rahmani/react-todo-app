@@ -53,9 +53,11 @@ const listItems = props => {
   }
   return (
     <ul className={classes.ListItems}>
-      {spinner}
-      {errorMessage}
-      <AnimatePresence>{listItemsOutput}</AnimatePresence>
+      <AnimatePresence>
+        {spinner}
+        {errorMessage}
+        {listItemsOutput}
+      </AnimatePresence>
     </ul>
   );
 };
